@@ -1,0 +1,21 @@
+{
+  "name": "mediafiles",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kzaid0767/mediafiles.git"
+  },
+  "author": "Kassim Zaid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kzaid0767/mediafiles/issues"
+  },
+  "homepage": "https://github.com/kzaid0767/mediafiles#readme",
+  "description": ""
+}
