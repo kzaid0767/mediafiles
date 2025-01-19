@@ -1,12 +1,13 @@
 import express from "express";
+import * as dotenv from "dotenv";
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 
 
 const app = express();
-const port = process.env.PORT || 9082;
-
+const port = process.env.PORT || 8082;
+dotenv.config();
 
 
 // Configure Cloudinary
@@ -36,7 +37,7 @@ const upload = multer({
     limits: {
         fileSize: 1024 * 1024 * 5,
         filefilter: (req, file, cb) => {
-            if (file.mimetype === "image") {
+            if (file.mimetype.startsWith("image/")) {
                 cb(null, true);
             } else {
                 cb(new Error("Only image files are allowed!"), false);
@@ -45,6 +46,17 @@ const upload = multer({
     }
 })
 
+// home route
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
+
+//upoload route
+app.post("/upload", upload.single("file"), async(req, res) => {
+    res.json({
+        message: "File uploaded successfully",
+    });
+});
 
 
 
